@@ -1,6 +1,6 @@
 from sly import Lexer, Parser
 from aocd import get_data
-from collections import namedtuple, Counter
+from collections import namedtuple
 
 
 class PasswordLexer(Lexer):
@@ -56,7 +56,7 @@ def parse_and_validate(lines, validator):
 
 
 def validate_one(p):
-    return p.min <= Counter(p.string).get(p.char, 0) <= p.max
+    return p.min <= p.string.count(p.char) <= p.max
 
 
 def validate_two(p):
